@@ -55,10 +55,10 @@ while  c < c_max
      c= c+1;
 end
 
-figure()
- pl = 0:1:T_k(1,end);
- [f, ki] = ksdensity(T_k(1, :), pl);
- plot(ki, f);
- R=sum(fokszam);
- R=(R/ember_num)*p;
+%figure()
+%pl = 0:1:T_k(1,end);
+%[f, ki] = ksdensity(T_k(1, :), pl);
+%plot(ki, f);
+%R=sum(fokszam);
+%R=(R/ember_num)*p;
  
