@@ -1,13 +1,12 @@
 %geografikus grafbol sima grafot fuggveny
-function [G,A, Px, Py] = geograf(ember_num,fert_tav)
+function [G,A, Px, Py] = geograf(ember_num,fert_tav,meret)
 % ember_num = 100;
 % fert_tav = 10;
 
-meret = 100; 
+ 
 Px = zeros(1,ember_num);
 Py = zeros(1,ember_num);
 elek = [];
- 
 
 for j = 1: ember_num
     x1 = round(rand(1)*meret);
