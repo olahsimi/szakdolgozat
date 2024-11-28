@@ -21,7 +21,7 @@ yticks([]);
 B = norm(A,2);
 c_max = 1000; 
 mu = 0.01;
-p=1/(B+2);
+p=1/(B+1);
 %p=0.15;
 tau = 2; 
 
@@ -52,11 +52,9 @@ while  c < c_max
      
     T_new = [T_k(1, end);0];
     
-   if c ==15
-    [T_k, allapot, nodeColors, h,fertozesek,gyogyultak] = hawkes3(T_k, T_new, tau, allapot, fert1,fokszam, mu,p, nodeColors, h,fertozesek,gyogyultak);
-   else
+   
     [T_k, allapot, nodeColors, h,fertozesek,gyogyultak,pl1] = hawkes(T_k, T_new, tau, allapot, fert1,fokszam, mu,p, nodeColors, h,fertozesek,gyogyultak,pl1);
-   end
+   
     [allapot, T_k] = kioszt_f(allapot, T_k, kapcsolat, ember_num, mu,p);
     title(pl1,sprintf('t = %.2f', T_k(1,end)));
     fert1= find(allapot(1,:)==1);
@@ -81,7 +79,7 @@ egeszek1 = floor(gyogyultak(2,:));
 uniqueInts1 = unique(egeszek1); % Find unique integer parts
 count1 = histcounts(egeszek1, [uniqueInts1, max(uniqueInts1) + 1]); % Count occurrences
 bar(uniqueInts1,count1./ember_num,"green");
-%plot(gyogyultak(2,:),gyogyultak(1,:)./ember_num,"LineWidth",1,"Color",'g')
+
 
 figure()
 egeszek = floor(T_k(1,:));
