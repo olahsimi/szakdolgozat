@@ -31,7 +31,7 @@ allapot(1,fert)=1;
 fert1=fert;
 allapot(2,fert) = elso;
 T_k = [elso; fert]; 
-[fokszam, kapcsolat] = deg_f2(A, ember_num);
+[fokszam, kapcsolat] = deg_f(A, ember_num);
 
 for i = 1:length(fert)
               nodeColors(fert(i), :) = [1 0 0];
@@ -75,7 +75,7 @@ egeszek1 = floor(gyogyultak(2,:));
 uniqueInts1 = unique(egeszek1); % Find unique integer parts
 count1 = histcounts(egeszek1, [uniqueInts1, max(uniqueInts1) + 1]); 
 bar(uniqueInts1,count1./ember_num,"green");
-%plot(gyogyultak(2,:),gyogyultak(1,:)./ember_num,"LineWidth",1,"Color",'g')
+
 
 figure()
 egeszek = floor(T_k(1,:));
