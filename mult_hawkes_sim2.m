@@ -4,11 +4,11 @@ meret = 100;
 ember_num = 400;
 fert_tav = 7;
 
-[G,A, Px, Py] = geograf2(ember_num,fert_tav, meret);
+[G,A, Px, Py] = geograf(ember_num,fert_tav, meret);
 figure()
 h = plot(G,'XData',Px,'YData',Py);
 title(sprintf('t = %.2f', 0));
-nodeColors = repmat([0 0 1], numnodes(G), 1); %csúcsok színének tetszőleges beállítása: S:kék, I:piros, r:zöld
+nodeColors = repmat([0 0 1], numnodes(G), 1); %csúcsok színének tetszőleges beállítása: S:kék, I:piros
 h.NodeColor = nodeColors;
 h.MarkerSize = 4;
  xlim([-1,meret+1]);
@@ -19,7 +19,7 @@ yticks([]);
 B = norm(A,2);
 c_max = 1500; 
 mu = 0.01;
-p=1/(B+2);
+p=1/(B+1);
 %p=0.2;
 tau = 4; 
 
@@ -73,18 +73,16 @@ plot(fertozesek(2,:),1-(fertozesek(1,:)./ember_num),"LineWidth",1,"Color",'b')
 gyogyultak(:,1)=[];
 egeszek1 = floor(gyogyultak(2,:));
 uniqueInts1 = unique(egeszek1); % Find unique integer parts
-count1 = histcounts(egeszek1, [uniqueInts1, max(uniqueInts1) + 1]); % Count occurrences
+count1 = histcounts(egeszek1, [uniqueInts1, max(uniqueInts1) + 1]); 
 bar(uniqueInts1,count1./ember_num,"green");
 %plot(gyogyultak(2,:),gyogyultak(1,:)./ember_num,"LineWidth",1,"Color",'g')
 
 figure()
 egeszek = floor(T_k(1,:));
-uniqueInts = unique(egeszek); % Find unique integer parts
-count = histcounts(egeszek, [uniqueInts, max(uniqueInts) + 1]); % Count occurrences
+uniqueInts = unique(egeszek); 
+count = histcounts(egeszek, [uniqueInts, max(uniqueInts) + 1]); 
 bar(uniqueInts,count,"red");
 title('Események bekövetkezésének száma időegységenként')
 xlabel('Idő')
 ylabel('Események száma')
-%tengely=0:1:uniqueInts(end);
-%xticks(tengely)
- 
+
